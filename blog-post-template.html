@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post Title | Cybersecurity Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .blog-post {
+            max-width: 800px;
+            margin: 100px auto 0;
+            padding: 40px 20px;
+        }
+
+        .blog-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .blog-header h1 {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--accent), var(--primary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+        }
+
+        .blog-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .blog-tags {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 30px;
+        }
+
+        .blog-tags .tag {
+            background-color: rgba(0, 102, 255, 0.2);
+            color: var(--primary-color);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(0, 102, 255, 0.3);
+        }
+
+        .blog-content {
+            background-color: var(--light-bg);
+            padding: 3rem;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 217, 255, 0.2);
+            line-height: 1.8;
+        }
+
+        .blog-content h2 {
+            color: var(--accent);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .blog-content h3 {
+            color: var(--secondary-color);
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+        }
+
+        .blog-content p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .blog-content ul,
+        .blog-content ol {
+            color: var(--text-secondary);
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .blog-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-content code {
+            background-color: var(--card-bg);
+            color: var(--accent);
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .blog-content pre {
+            background-color: var(--card-bg);
+            color: var(--accent);
+            padding: 1.5rem;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 1rem 0;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .blog-content pre code {
+            background: none;
+            color: var(--accent);
+            padding: 0;
+        }
+
+        .blog-content blockquote {
+            border-left: 4px solid var(--secondary-color);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .blog-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .blog-content th,
+        .blog-content td {
+            border: 1px solid rgba(0, 217, 255, 0.2);
+            padding: 0.8rem;
+            text-align: left;
+            color: var(--text-secondary);
+        }
+
+        .blog-content th {
+            background-color: var(--card-bg);
+            color: var(--accent);
+        }
+
+        .blog-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin: 1.5rem 0;
+        }
+
+        .blog-footer {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(0, 217, 255, 0.2);
+        }
+
+        .author-section {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .author-section h4 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .back-link {
+            color: var(--secondary-color);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            display: inline-block;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--accent);
+        }
+
+        .related-posts {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(0, 217, 255, 0.2);
+        }
+
+        .related-posts h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .related-card {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 102, 255, 0.3);
+        }
+
+        .related-card h4 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .related-card a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .related-card a:hover {
+            color: var(--accent);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">SecurePort</div>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#skills">Skills</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+                <li><a href="index.html#blog">Blog</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Blog Post -->
+    <article class="blog-post">
+        <a href="index.html#blog" class="back-link">← Back to Blog</a>
+        
+        <div class="blog-header">
+            <h1>[Your Blog Post Title]</h1>
+            <div class="blog-meta">
+                <span>📅 [Date Published]</span>
+                <span>👤 [Your Name]</span>
+                <span>⏱️ [Reading Time] min read</span>
+            </div>
+            <div class="blog-tags">
+                <span class="tag">Tag 1</span>
+                <span class="tag">Tag 2</span>
+                <span class="tag">Tag 3</span>
+            </div>
+        </div>
+
+        <div class="blog-content">
+            <!-- INTRODUCTION SECTION -->
+            <h2>Introduction</h2>
+            <p>
+                Start with an engaging introduction that explains what this article will cover.
+                Hook the reader with an interesting question or scenario related to cybersecurity.
+            </p>
+
+            <!-- TABLE OF CONTENTS (Optional) -->
+            <h3>Table of Contents</h3>
+            <ul>
+                <li><a href="#section1" style="color: var(--secondary-color);">What is [Topic]?</a></li>
+                <li><a href="#section2" style="color: var(--secondary-color);">How it Works</a></li>
+                <li><a href="#section3" style="color: var(--secondary-color);">Practical Example</a></li>
+                <li><a href="#section4" style="color: var(--secondary-color);">Mitigation Strategies</a></li>
+                <li><a href="#section5" style="color: var(--secondary-color);">Conclusion</a></li>
+            </ul>
+
+            <!-- MAIN CONTENT SECTION 1 -->
+            <h2 id="section1">What is [Topic]?</h2>
+            <p>
+                Provide a clear explanation of the cybersecurity concept you're discussing.
+                Use simple language that both beginners and experienced professionals can understand.
+            </p>
+            <p>
+                Define key terms and provide context for why this topic is important.
+            </p>
+
+            <!-- CODE EXAMPLE -->
+            <h3>Code Example</h3>
+            <p>If relevant, include code examples:</p>
+            <pre><code># Example Python code for your topic
+def security_function():
+    # Your code here
+    pass
+
+# This demonstrates the concept
+result = security_function()
+print(result)</code></pre>
+
+            <!-- SECTION 2 -->
+            <h2 id="section2">How it Works</h2>
+            <p>
+                Explain the mechanics of the topic in detail. Break down complex processes into
+                digestible steps that readers can follow and understand.
+            </p>
+
+            <!-- NUMBERED LIST -->
+            <h3>Step-by-Step Process</h3>
+            <ol>
+                <li><strong>Step 1:</strong> Description of what happens first</li>
+                <li><strong>Step 2:</strong> What occurs in the second phase</li>
+                <li><strong>Step 3:</strong> The final result or outcome</li>
+            </ol>
+
+            <!-- SECTION 3 -->
+            <h2 id="section3">Practical Example</h2>
+            <p>
+                Provide a real-world example or scenario that demonstrates the concept.
+                Use analogies if helpful to make complex topics more relatable.
+            </p>
+
+            <!-- IMPORTANT NOTE -->
+            <blockquote>
+                <strong>⚠️ Important:</strong> Always emphasize responsible disclosure and legal considerations
+                when discussing offensive security techniques or vulnerabilities.
+            </blockquote>
+
+            <!-- TABLE EXAMPLE -->
+            <h3>Comparison Table</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Aspect</th>
+                        <th>Method A</th>
+                        <th>Method B</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Speed</td>
+                        <td>Fast</td>
+                        <td>Slower</td>
+                    </tr>
+                    <tr>
+                        <td>Accuracy</td>
+                        <td>High</td>
+                        <td>Very High</td>
+                    </tr>
+                    <tr>
+                        <td>Difficulty</td>
+                        <td>Moderate</td>
+                        <td>Advanced</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- SECTION 4 -->
+            <h2 id="section4">Mitigation Strategies</h2>
+            <p>
+                Discuss how to defend against or prevent the vulnerability/attack you discussed.
+                Provide actionable recommendations.
+            </p>
+
+            <!-- BULLET LIST -->
+            <h3>Best Practices</h3>
+            <ul>
+                <li>Practice 1: Key recommendation with explanation</li>
+                <li>Practice 2: Another important mitigation step</li>
+                <li>Practice 3: Additional defensive measure</li>
+                <li>Practice 4: Implementation tip</li>
+            </ul>
+
+            <!-- TOOLS SECTION -->
+            <h3>Relevant Tools</h3>
+            <ul>
+                <li><strong>Tool 1:</strong> Description of what it does and why it's useful</li>
+                <li><strong>Tool 2:</strong> When and how to use this tool</li>
+                <li><strong>Tool 3:</strong> Links to resources or documentation</li>
+            </ul>
+
+            <!-- CONCLUSION -->
+            <h2 id="section5">Conclusion</h2>
+            <p>
+                Summarize the key takeaways from your article.
+                Emphasize why readers should care about this topic.
+            </p>
+            <p>
+                End with a call to action - encourage readers to practice, learn more, or share
+                their own experiences in the comments.
+            </p>
+
+            <!-- KEY TAKEAWAYS -->
+            <h3>Key Takeaways</h3>
+            <ul>
+                <li>Main point 1 from your article</li>
+                <li>Main point 2 from your article</li>
+                <li>Main point 3 from your article</li>
+            </ul>
+
+            <!-- ADDITIONAL RESOURCES -->
+            <h2>Additional Resources</h2>
+            <ul>
+                <li><a href="#" style="color: var(--secondary-color);">Related Article or Tool</a></li>
+                <li><a href="#" style="color: var(--secondary-color);">Official Documentation</a></li>
+                <li><a href="#" style="color: var(--secondary-color);">Research Paper or Reference</a></li>
+            </ul>
+
+            <!-- AUTHOR SECTION -->
+            <div class="blog-footer">
+                <div class="author-section">
+                    <h4>About the Author</h4>
+                    <p>
+                        You can add information about yourself here. Mention your expertise, 
+                        certifications, and interests in cybersecurity. Include a link to your 
+                        full profile for readers who want to know more about you.
+                    </p>
+                </div>
+
+                <!-- RELATED POSTS -->
+                <div class="related-posts">
+                    <h3>Related Posts</h3>
+                    <div class="related-grid">
+                        <div class="related-card">
+                            <h4>Related Article 1</h4>
+                            <p>Brief description of another article on a related topic.</p>
+                            <a href="#">Read More →</a>
+                        </div>
+                        <div class="related-card">
+                            <h4>Related Article 2</h4>
+                            <p>Another interesting article that readers might enjoy.</p>
+                            <a href="#">Read More →</a>
+                        </div>
+                        <div class="related-card">
+                            <h4>Related Article 3</h4>
+                            <p>A complementary article that builds on this topic.</p>
+                            <a href="#">Read More →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Cybersecurity Portfolio. All rights reserved. | Built with security in mind.</p>
+            <div class="social-links">
+                <a href="https://github.com" target="_blank">GitHub</a>
+                <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+                <a href="https://twitter.com" target="_blank">Twitter</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
